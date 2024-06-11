@@ -9,14 +9,19 @@ output_file="web_server_scan_$(date +%Y%m%d_%H%M%S).txt"
 # შეტყობინება სკანირების დაწყების შესახებ
 echo "ვებსერვერის სკანირება მიმდინარეობს $target_ip მისამართზე..." >> $output_file
 
-# Nmap-ის პორტების სკანირება
-echo "Nmap პორტების სკანირება:" >> $output_file
-nmap -p- -oN nmap_scan.txt $target_ip
-cat nmap_scan.txt >> $output_file
+# Nmap-ის სრული TCP პორტების სკანირება
+echo "Nmap სრული TCP პორტების სკანირება:" >> $output_file
+nmap -p- -oN nmap_tcp_scan.txt $target_ip
+cat nmap_tcp_scan.txt >> $output_file
+
+# Nmap-ის სრული UDP პორტების სკანირება
+echo "Nmap სრული UDP პორტების სკანირება:" >> $output_file
+nmap -sU -p- -oN nmap_udp_scan.txt $target_ip
+cat nmap_udp_scan.txt >> $output_file
 
 # Nmap-ის სერვისების და ვერსიების სკანირება
 echo "Nmap სერვისების და ვერსიების სკანირება:" >> $output_file
-nmap -sV -oN nmap_service_version_scan.txt $target_ip
+nmap -sV -sC -oN nmap_service_version_scan.txt $target_ip
 cat nmap_service_version_scan.txt >> $output_file
 
 # Apache-ის კონფიგურაციის შემოწმება
