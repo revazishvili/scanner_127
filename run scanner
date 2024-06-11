@@ -2,7 +2,7 @@ git clone https://github.com/revazishvili/scanner_127.git
 
 cd scanner_127
 
-sed 's/\r$//' scan.sh > temp && mv temp scan.sh
+sed 's/\r$//' scan2.sh > temp && mv temp scan2.sh
 
-chmod +x scan.sh  
+chmod +x scan2.sh  
 sudo ./scan2.sh
