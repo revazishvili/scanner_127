@@ -1,0 +1,8 @@
+git clone https://github.com/revazishvili/scanner_127.git
+
+cd scanner_127
+
+sed 's/\r$//' scan.sh > temp && mv temp scan.sh
+
+chmod +x scan.sh  
+sudo ./scan2.sh
